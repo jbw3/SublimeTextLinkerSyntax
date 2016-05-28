@@ -1,0 +1,28 @@
+%YAML 1.2
+---
+name: Linker Script
+file_extentions: [ld]
+scope: source.linker
+
+contexts:
+  main:
+    - include: numericLiterals
+    - include: beginBlockComment
+    - include: controlKeywords
+
+  beginBlockComment:
+    - match: (?=/\*)
+      push: blockComment
+
+  blockComment:
+    - meta_scope: comment.block.linker
+    - match: (?<!/)\*/
+      pop: true
+
+  numericLiterals:
+    - match: \b(?:\d+|0[Xx][\dA-Fa-f]+)\b
+      scope: constant.numeric.linker
+
+  controlKeywords:
+    - match: \b(?:ADDR|ALIGN|AT|ENTRY|OUTPUT_FORMAT|SECTIONS)\b
+      scope: keyword.control.linker
