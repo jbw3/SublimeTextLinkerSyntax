@@ -20,9 +20,9 @@ contexts:
       pop: true
 
   numericLiterals:
-    - match: \b(?:\d+|0[Xx][\dA-Fa-f]+)\b
+    - match: \b(?:[0-9]+|0[Xx][0-9A-Fa-f]+)[KM]?\b
       scope: constant.numeric.linker
 
   controlKeywords:
-    - match: \b(?:ADDR|ALIGN|AT|ENTRY|OUTPUT_FORMAT|SECTIONS)\b
+    - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
       scope: keyword.control.linker
