@@ -7,17 +7,17 @@ scope: source.linker
 contexts:
   main:
     - include: numericLiterals
-    - include: beginBlockComment
+    - include: comments
     - include: controlKeywords
 
-  beginBlockComment:
-    - match: (?=/\*)
-      push: blockComment
-
-  blockComment:
-    - meta_scope: comment.block.linker
-    - match: (?<!/)\*/
-      pop: true
+  comments:
+    - match: /\*
+      scope: punctuation.definition.comment.linker
+      push:
+        - meta_scope: comment.block.linker
+        - match: \*/
+          scope: punctuation.definition.comment.linker
+          pop: true
 
   numericLiterals:
     - match: \b(?:[0-9]+|0[Xx][0-9A-Fa-f]+)[KM]?\b
