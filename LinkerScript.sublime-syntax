@@ -9,12 +9,12 @@ variables:
 
 contexts:
   main:
+    - include: comments
     - include: oct_literals
     - include: int_literals
     - include: hex_literals
-    - include: comments
-    - include: controlKeywords
-    - include: locationCounter
+    - include: control_keywords
+    - include: location_counter
 
   comments:
     - match: /\*
@@ -37,10 +37,10 @@ contexts:
     - match: \b0[Xx][0-9A-Fa-f]+{{num_suffix}}?\b
       scope: constant.numeric.hex.linker
 
-  controlKeywords:
+  control_keywords:
     - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
       scope: keyword.control.linker
 
-  locationCounter:
+  location_counter:
     - match: \B\.\B
       scope: variable.language.linker
