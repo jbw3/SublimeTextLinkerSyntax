@@ -9,6 +9,7 @@ contexts:
     - include: numericLiterals
     - include: comments
     - include: controlKeywords
+    - include: locationCounter
 
   comments:
     - match: /\*
@@ -26,3 +27,7 @@ contexts:
   controlKeywords:
     - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
       scope: keyword.control.linker
+
+  locationCounter:
+    - match: \B\.\B
+      scope: variable.language.linker
