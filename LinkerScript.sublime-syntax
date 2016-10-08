@@ -4,9 +4,14 @@ name: Linker Script
 file_extentions: [ld]
 scope: source.linker
 
+variables:
+  num_suffix: '[KM]'
+
 contexts:
   main:
-    - include: numericLiterals
+    - include: oct_literals
+    - include: int_literals
+    - include: hex_literals
     - include: comments
     - include: controlKeywords
     - include: locationCounter
@@ -20,9 +25,17 @@ contexts:
           scope: punctuation.definition.comment.linker
           pop: true
 
-  numericLiterals:
-    - match: \b(?:[0-9]+|0[Xx][0-9A-Fa-f]+)[KM]?\b
-      scope: constant.numeric.linker
+  oct_literals:
+    - match: \b0[0-7]*{{num_suffix}}?\b
+      scope: constant.numeric.octal.linker
+
+  int_literals:
+    - match: \b[1-9][0-9]*{{num_suffix}}?\b
+      scope: constant.numeric.integer.linker
+
+  hex_literals:
+    - match: \b0[Xx][0-9A-Fa-f]+{{num_suffix}}?\b
+      scope: constant.numeric.hex.linker
 
   controlKeywords:
     - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
