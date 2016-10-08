@@ -14,6 +14,7 @@ contexts:
     - include: int_literals
     - include: hex_literals
     - include: control_keywords
+    - include: symbol_names   # must be included before location_counter
     - include: location_counter
 
   comments:
@@ -40,6 +41,16 @@ contexts:
   control_keywords:
     - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
       scope: keyword.control.linker
+
+  # TODO: symbol names may be enclosed in double quotes
+  symbol_names:
+    - match: '(?x)
+              (?:
+                \b[A-Za-z_][A-Za-z_\.0-9\-]*
+              |
+                \B\.[A-Za-z_\.0-9\-]+
+              )'
+      scope: variable.other.linker
 
   location_counter:
     - match: \B\.\B
