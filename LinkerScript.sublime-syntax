@@ -42,7 +42,6 @@ contexts:
     - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
       scope: keyword.control.linker
 
-  # TODO: symbol names may be enclosed in double quotes
   symbol_names:
     - match: '(?x)
               (?:
