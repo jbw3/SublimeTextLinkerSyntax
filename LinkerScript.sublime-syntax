@@ -51,6 +51,14 @@ contexts:
                 \B\.[A-Za-z_\.0-9\-]+
               )'
       scope: variable.other.linker
+    - match: '"'
+      push:
+        - meta_scope: variable.other.linker
+        - match: '"'
+          pop: true
+        - match: \n
+          scope: invalid.illegal.linker
+          pop: true
 
   location_counter:
     - match: \B\.\B
