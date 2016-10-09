@@ -39,7 +39,26 @@ contexts:
       scope: constant.numeric.hex.linker
 
   control_keywords:
-    - match: \b(?:ABSOLUTE|ADDR|ALIGN|AT|DEFINED|ENTRY|MEMORY|NEXT|OUTPUT_FORMAT|SECTIONS|SIZEOF)\b
+    - match: '(?x)
+              \b(?:ABSOLUTE
+                  |ADDR
+                  |ALIGN
+                  |AT
+                  |BLOCK
+                  |BYTE
+                  |CREATE_OBJECT_SYMBOLS
+                  |DEFINED
+                  |ENTRY
+                  |FILL
+                  |LONG
+                  |MEMORY
+                  |NEXT
+                  |OUTPUT_FORMAT
+                  |QUAD
+                  |SECTIONS
+                  |SHORT
+                  |SIZEOF
+                  |SIZEOF_HEADERS)\b'
       scope: keyword.control.linker
 
   symbol_names:
