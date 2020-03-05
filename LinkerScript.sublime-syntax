@@ -50,10 +50,14 @@ contexts:
                   |DEFINED
                   |ENTRY
                   |FILL
+                  |KEEP
+                  |LENGTH
                   |LONG
                   |MEMORY
                   |NEXT
+                  |ORIGIN
                   |OUTPUT_FORMAT
+                  |PROVIDE_HIDDEN
                   |QUAD
                   |SECTIONS
                   |SHORT
